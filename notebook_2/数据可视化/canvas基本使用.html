@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas基本能使用</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        canvas {
+            border: 5px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        // 绘制线段
+        ctx.moveTo(100, 100);//起点
+        ctx.lineTo(200, 100);//其他点
+        ctx.lineTo(100, 200);//其他点
+        ctx.fillStyle = 'red';//设置填充颜色
+        ctx.fill();//填充
+        ctx.strokeStyle = 'yellow'// 设置线段颜色
+        ctx.lineWidth = '5'//设置线段粗细
+        ctx.closePath()//连接起点和终点
+        ctx.stroke();//执行画笔
+    </script>
+</body>
+
+</html>

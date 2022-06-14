@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lei {
+            width: 300px;
+            height: 300px;
+            background-color: antiquewhite;
+        }
+
+        a[ref="href"] {
+            background-color: yellowgreen;
+        }
+
+        p {
+            background-color: blue;
+        }
+        li:last-child{
+            background-color: violet;
+        }
+        li::after{
+            background-color: aqua;
+        }
+        ui>li{
+            background-color: blueviolet;
+        }
+        p+a{
+            background-color: rgb(37, 28, 9);
+        }
+        ul li{
+            background-color: tomato;
+        }
+        #id{
+            background-color: teal;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="lei">类选择器
+        <p>标签选择器</p>
+        <a href="">属性选择器</a>
+        <ul>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>伪类选择器</li>
+        </ul>
+        <ol>
+            <li>伪元素选择器</li>
+            <span id="jk">id</span>
+        </ol>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+        div {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div');
+        const myEchart = echarts.init(div);
+        // 数据集
+        let data = [
+            ['衣服', 10, 20, 'x', 30],
+            ['衣服', 10, 20, 'x', 30],
+            ['衣服', 10, 20, 'x', 30],
+            ['衣服', 10, 20, 'x', 30],
+        ];
+        myEchart.setOption({
+            dataSete: {
+                // 数据源
+                source: data
+            },
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            series: [
+                // 柱状图
+                {
+                    type: 'bar',
+                    encode:{
+                        y:1
+                    }
+                },
+                // 折线图
+                {
+                    type: 'line',
+                    color: 'pink',
+                    encode:{
+                        y:2
+                    }
+                },
+                // 饼图
+                {
+                    type: 'pie',
+                    encode:{
+                        itemName:3,
+                        value:4
+                    }
+                }
+            ]
+        })
+    </script>
+</body>
+
+</html>

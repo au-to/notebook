@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .shanxing {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            background-color: yellow;
+        }
+
+        .sx1 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transform: rotate(0deg);
+            clip: rect(0px, 100px, 200px, 0px);
+            /*这个clip属性用来绘制半圆，在clip的rect范围内的
+            内容显示出来，使用clip属性，元素必须是absolute的 */
+            border-radius: 100px;
+            background-color: #f00;
+            /*-webkit-animation: an1 2s infinite linear; */
+        }
+
+        .sx2 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transform: rotate(0deg);
+            clip: rect(0px, 100px, 200px, 0px);
+            border-radius: 100px;
+            background-color: #f00;
+            /*-webkit-animation: an2 2s infinite linear;*/
+        }
+
+        /*绘制一个60度扇形*/
+        .shanxing1 .sx1 {
+            transform: rotate(-30deg);
+        }
+
+        .shanxing1 .sx2 {
+            transform: rotate(-150deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shanxing shanxing1">
+        <div class="sx1"></div>
+        <div class="sx2"></div>
+    </div>
+</body>
+
+</html>

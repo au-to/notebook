@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        // vue2
+        // Object.defineProperty
+        let data = {
+            msg: 'hhh',
+            age: 18
+        }
+        let vm = {}
+        Object.defineProperty(vm, msg, {
+            get() {
+                return data.msg;
+            },
+            set(value) {
+                if (value == data.msg) return;
+                data.msg = value;
+                document.querySelector('app').innerHTML = data.msg;
+            }
+        })
+        vm.msg = '1234';
+
+
+        // vue3
+        let data1 = {
+            msg: 'hhh',
+            age: 18
+        }
+        // 创建代理
+        const vm = new Proxy(data1, {
+            get(target, key) {
+                return target[key];
+            },
+            set(target, key, value) {
+                if (target[key] == value) return;
+                target[key] = value;
+                document.querySelector('app').innerHTML = target[key];
+            }
+        })
+
+        // Proxy(target, {
+        //     set: function (target, name, value, receiver) {
+        //         var success = Reflect.set(target, name, value, receiver);
+        //         if (success) {
+        //             console.log('hhh');
+        //         }
+        //         return success;
+        //     }
+        // })
+
+        // 发布订阅模式
+        class Vue {
+            constructor() {
+                // 存储事件
+                this.subs = {};
+            }
+            // 实现$on方法
+            $on(type, fn) {
+                if (!this.subs[type]) {
+                    this.subs[type] = [];
+                }
+                this.subs[type].push(fn);
+            }
+            // 实现$emit()方法
+            $emit(type) {
+                if (this.subs[type]) {
+                    const args = Array.prototype.slice.call(arguments, 1);
+                    this.subs[type].forEach(fn => { fn(...args) });
+                }
+            }
+        }
+        // 使用
+        const eventHub = new Vue();
+        eventHub.$on('sum', function () {
+            let count = [...arguments].reduce((x, y) => { x + y });
+            console.log(count);
+        })
+        eventHub.$emit('sum', 1, 2, 3);
+
+        // 观察者模式
+        class Subject {
+            constructor() {
+                this.list = [];
+            }
+            // 添加观察者
+            add(obs) {
+                if (obs && obs.update) {
+                    this.list.push(obs);
+                }
+            }
+            // 通知观察者
+            notify() {
+                this.list.forEach((obs) => {
+                    obs.update();
+                })
+            }
+            // 清空观察者
+            empty() {
+                this.list = [];
+            }
+        }
+        class Observer {
+            update() {
+                console.log('更新事件');
+            }
+        }
+
+        // 数组实现响应式
+        const methods = ['pop', 'shift', 'unshift', 'sort', 'reverse', 'splice', 'push'];
+        let proto = Object.create(Array.prototype);
+        methods.forEach((method) => {
+            proto[method] = function () {
+                Array.prototype[method].call(this, ...arguments);
+                viewRender(); //视图更新
+                function observer(obj) {
+                    if (Array.isArray(obj)) {
+                        obj._proto_ = proto;
+                    }
+                    if (typeof obj == 'Object') {
+                        //对象的响应式实现
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+body {
+    max-width: 750px;
+    min-width: 320px;
+    margin: 0 auto;
+    height: 1200px;
+    background-color: #f2f4f7;
+}
+
+@media screen and (min-width:750px) {
+    html {
+        font-size: 37.5px !important;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #707070;
+}
+
+header {
+    width: 100%;
+    height: 2.133333rem;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    line-height: 2.133333rem;
+    font-size: 0.933333rem;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.2rem 0 1.6rem 0;
+
+    .item {
+        display: flex;
+        width: 33.33%;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 3.7067rem;
+            height: 3.7067rem;
+        }
+
+        span {
+            font-size: .6667rem;
+            color: #707070;
+        }
+
+        &:nth-child(-n+3) {
+            margin-bottom: 1.653333rem;
+        }
+    }
+}
+
+.go {
+    margin: 0 0.48rem;
+
+    img {
+        width: 100%;
+    }
+}
+
+.wrap {
+    margin-bottom: 1.1467rem;
+    background-color: #fff;
+}
+
+.contenner {
+    margin-top: .2667rem;
+    padding: 1.066667rem 0.64rem;
+    background-color: #fff;
+
+    .content-hd {
+        h4 {
+            margin: 0;
+            color: #333;
+            font-size: .7467rem;
+
+            img {
+                display: inline-block;
+                width: 1.0133rem;
+                height: 1.0133rem;
+                vertical-align: middle;
+            }
+        }
+
+        .more {
+            font-size: .5867rem;
+            color: #999;
+        }
+
+        height: 1.0133rem;
+        display: flex;
+        justify-content: space-between;
+        line-height: 1.0133rem;
+    }
+
+    .get-job-focus {
+        margin-top: 1.04rem;
+
+        .swiper-container {
+            width: 14.4rem;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            transition: 300ms;
+            transform: scale(0.8);
+            opacity: 0.5;
+
+            a {
+                width: 9.0133rem;
+                height: 10.0267rem;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            p {
+                width: 9.0133rem;
+                font-size: .6667rem;
+                color: #333;
+            }
+        }
+
+        .swiper-slide-active,
+        .swiper-slide-duplicate-active {
+            transform: scale(1);
+            z-index: 10;
+            opacity: 1;
+        }
+
+        position: relative;
+    }
+
+    .study {
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            width: 7.7333rem;
+            height: 9.0667rem;
+            border-radius: .2667rem;
+            box-shadow: 0 0 .2667rem rgba(0, 0, 0, 0.5);
+            text-align: center;
+            font-size: .48rem;
+            background: #fff;
+            img {
+                width: 100%;
+            }
+            margin-left: .8267rem;
+        }
+
+        padding-top: 1.04rem;
+    }
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    margin-top: .7467rem;
+    height: 3.0133rem;
+    display: flex;
+    z-index: 1;
+    padding-top: .5067rem;
+    border-top: 1px solid #ccc;
+    a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 1.04rem;
+            height: 1.0933rem;
+        }
+        span {
+            font-size: .5867rem;
+            color: #666666;
+            margin-top: 10px;
+        }
+    }
+}

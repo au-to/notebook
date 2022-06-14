@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header,
+        footer {
+            width: auto;
+            height: 100px;
+            background-color: antiquewhite;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        nav {
+            background-color: aqua;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        main {
+            background-color: rgb(202, 202, 243);
+            padding: 10px 0;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section {
+            width: 900px;
+            background-color: rgb(205, 139, 52);
+        }
+
+        aside {
+            width: 300px;
+            background-color: yellowgreen;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+
+<body>
+    <header>头部</header>
+    <nav>导航栏</nav>
+    <main>
+        <section>
+            <article>
+                    <ui>
+                        <li>1</li>
+                        <li>1</li>
+                        <li>1</li>
+                        <li>1</li>
+                        <li>1</li>
+                    </ui>
+                    <p>你好</p>
+                    <p>欢迎测试</p>
+            </article>
+        </section>
+        <aside>
+            <ui>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ui>
+            <h2>hello</h2>
+        </aside>
+        <div class="clearfix"></div>
+    </main>
+    <footer>底部</footer>
+</body>
+
+</html>

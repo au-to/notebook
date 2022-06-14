@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柱状图</title>
+    </title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="800" height="420"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        // 绘制文本
+        ctx.font = '16px 微软雅黑';
+        ctx.fillText('数据可视化', 20, 60);
+        // 绘制线段
+        ctx.moveTo(100, 100);
+        ctx.lineTo(100, 400);
+        ctx.lineTo(700, 400);
+        ctx.stroke();
+        // 绘制其它线段
+        ctx.moveTo(100,100);
+        ctx.lineTo(700, 100);
+        ctx.moveTo(100,160);
+        ctx.lineTo(700, 160);
+        ctx.moveTo(100,220);
+        ctx.lineTo(700, 220);
+        ctx.moveTo(100,280);
+        ctx.lineTo(700,280);
+        ctx.moveTo(100,340);
+        ctx.lineTo(700,340);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

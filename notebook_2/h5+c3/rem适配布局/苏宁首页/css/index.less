@@ -1,0 +1,105 @@
+@import "common";
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background: #F2F2F2;
+}
+
+@baseFont: 50;
+
+.search-content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15rem;
+    height: (88rem / @baseFont);
+    background-color: #FFC001;
+
+    .classify {
+        width: (44rem / @baseFont);
+        height: (70rem / @baseFont);
+        margin: (11rem / @baseFont) (25rem / @baseFont) (7rem / @baseFont) (24rem / @baseFont);
+        background: url("../images/classify.png") no-repeat;
+        background-size: (44rem / @baseFont) (70rem / @baseFont);
+    }
+
+    .search {
+        flex: 1;
+
+        input {
+            box-sizing: border-box;
+            height: (66rem / @baseFont);
+            width: 100%;
+            border-radius: (33rem / @baseFont);
+            border: 0;
+            outline: none;
+            background-color: #fff2cc;
+            margin-top: (12rem / @baseFont);
+            padding-left: (55rem / @baseFont);
+            color: #757575;
+            font-size: (25rem / @baseFont);
+        }
+    }
+
+    .login {
+        width: (75rem / @baseFont);
+        height: (70rem / @baseFont);
+        margin: (10rem / @baseFont);
+        font-size: (25rem / @baseFont);
+        text-align: center;
+        line-height: (70rem / @baseFont);
+        color: #fff;
+    }
+}
+
+.banner {
+    width: (750rem / @baseFont);
+    height: (369rem / @baseFont);
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.ad {
+    display: flex;
+
+    a {
+        flex: 1;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+nav {
+    width: (750rem / @baseFont);
+
+    a {
+        float: left;
+        width: (150rem / @baseFont);
+        height: (140rem / @baseFont);
+        text-align: center;
+
+        img {
+            display: block;
+            margin: 0 auto;
+            width: (82rem / @baseFont);
+            height: (82rem / @baseFont);
+            margin: 10rem / @baseFont auto 0;
+        }
+
+        span {
+            font-size: (25rem / @baseFont);
+            color: #333;
+        }
+    }
+}

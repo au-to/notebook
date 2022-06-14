@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+        div {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div');
+        const myEchart = echarts.init(div);
+        myEchart.setOption({
+            // 一个坐标系
+            title: {
+                text: '一个坐标系'
+            },
+            xAxis: {},
+            yAxis: {
+                axisLine: {
+                    show: true
+                },
+                axisTick: {
+                    show: true
+                }
+            },
+            
+            // 散点图
+            series: [
+                {
+                    type: 'scatter',
+                    data: [
+                        [10, 20, 30, 40],
+                        [20, 30, 40, 50],
+                        [10, 30, 50, 70],
+                        [20, 20, 20, 20]
+                    ]
+                }
+            ]
+        })
+    </script>
+</body>
+
+</html>

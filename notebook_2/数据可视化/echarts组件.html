@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+    <style>
+        div {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div');
+        const myEchart = echarts.init(div);
+        myEchart.setOption({
+            title: {
+                text: 'echarts组件'
+            },
+            dataZoom: {},
+            xAxis: {
+                data: ['游戏', '电影', '直播', '娱乐']
+            },
+            yAxis: {},
+            series: [
+                {
+                    type: 'bar',
+                    name: '柱状图',
+                    data: [10, 20, 30, 40]
+                },
+
+                {
+                    type: 'line',
+                    name: "折线图",
+                    data: [20, 30, 40, 50]
+                },
+            ],
+            // 提示组件
+            tooltip: {
+                textStyle: {
+                    color: 'red'
+                }
+            },
+            legend: {
+                data: ['柱状图', '折线图']
+            },
+            // 工具栏组件
+            toolbox: {},
+            grid:{
+                left: 20
+            }
+        })
+    </script>
+</body>
+
+</html>
