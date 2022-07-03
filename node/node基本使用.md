@@ -166,4 +166,3 @@ i5ting_toc：把md转为html页面的工具：`i5ting_toc -f 文件路径 -o`
 * 在当前目录下找package.json文件，寻找main属性，作为require加载的入口
 * 如果没有package.json或找不到main属性，会尝试加载目录下的index.js文件
 * 若失败，打印错误信息
-

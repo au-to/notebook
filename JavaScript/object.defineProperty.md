@@ -3,7 +3,7 @@
 > ``` 
 > <script>
 > 	    let number = 10;
->         let person = {
+>         	let person = {
 >             name: 'zs',
 >             sex: '男',
 >         }
