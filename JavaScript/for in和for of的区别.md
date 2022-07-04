@@ -1,4 +1,4 @@
-## for in vs for of
+## 	for in vs for of
 
 ### 相同点
 
