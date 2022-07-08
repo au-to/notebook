@@ -1,10 +1,6 @@
-1. prevent： preventDefauilt()
+1. prevent： preventDefauilt() 、阻止默认事件
 
-   阻止默认事件
-
-2. stop：stopPropagation()
-
-   阻止事件冒泡
+2. stop：stopPropagation() 、阻止事件冒泡
 
 3. once：事件只触发一次
 
