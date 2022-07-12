@@ -1,7 +1,7 @@
 Vue2实现数据响应式的原理
 
 * 数据劫持结合发布订阅模式
-* 使用Object.defineProperty()来劫持各个属性的getter和setter
+* 使用Object.defineProperty()来劫持各个属性的getter和setter，在数据变动时发布消息给订阅者，触发相应的监听回调
 
 缺陷
 

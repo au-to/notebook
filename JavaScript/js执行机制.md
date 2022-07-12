@@ -16,7 +16,7 @@
 
 - 根据任务队列中任务的不同，划分为宏任务和微任务
 - 事件循环由宏任务和执行宏任务期间产生的微任务组成
-- 主线程在执行完宏任务后，会立即执行入队的微任务
+- 主线程在执行完本次宏任务后，会立即执行入队的微任务
 - 在下一轮事件循环中，再从宏任务开始，相当于给了微任务一次插队的机会
 - 常见的宏任务有：script、setTimeOut、setInterval、setImmediate、I/O
 - 常见的微任务有：process.nextTick、Promise、Object.observe、MutationObserver

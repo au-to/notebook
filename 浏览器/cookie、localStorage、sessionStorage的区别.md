@@ -1,0 +1,17 @@
+相同点
+
+* 都保存在浏览器端，且都是同源的
+
+区别
+
+* cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递；而localStorage和sessionStorage不会自动把数据发送给服务器，仅在本地保存。
+* 存储大小的限制：cookie数据不超过4k，同时由于每次请求都会携带cookie，所以cookie只适合保存很小的数据；sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大 
+* 数据有效期不同：sessionStorage仅在当前浏览器窗口关闭之前有效；localStorage可以持久存储；cookie只在设置的过期时间之前有效，即使窗口关闭或浏览器关闭
+* 作用域不同：sessionStorage不在不同的窗口中共享；localstorage在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的 
+
+localStorage的限制
+
+* 目前所有的浏览器中都会把localStorage的值类型限定为string类型，这在对我们日常比较常见的JSON对象类型需要一些转换
+* ocalStorage在浏览器的隐私模式下面是不可读取的
+*  localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡
+* localStorage不能被爬虫抓取到
