@@ -14,5 +14,5 @@ v-model的作用
 
 v-model实现原理
 
-* v-bind:绑定响应式数据
-* 触发oninput 事件并传递数据
+* 用v-bind给input的value属性动态绑定一个响应式数据，这样就实现了data向页面的单向数据流
+* 给表单元素的oninput事件添加一个回调：$event.target.value动态获取输入的值赋值给data下的响应式数据就可以
