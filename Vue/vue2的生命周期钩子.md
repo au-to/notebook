@@ -59,7 +59,7 @@ Vue的生命周期分为3个大的阶段：
 
 12. activated()：keep-alive缓存的组件激活时调用
 
-13. activated()：keep-alive缓存的组件停用时调用
+13. deactivated()：keep-alive缓存的组件停用时调用
 
 14. beforeDestroy()：vue组件销毁之前调用
 

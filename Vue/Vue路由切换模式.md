@@ -12,13 +12,14 @@ vue-router控制路由切换主要有hash模式和history模式，默认使用ha
 **history路由**
 
 * 主要使用H5的history对象的pushState()和replaceState()这两个api结合window.popstate()事件（监听浏览器前进后退）实现
+* popstate事件只会在浏览器的某些行为下触发，比如点击后退按钮，即在同一文档下的两个历史记录间导航时触发
 * pushState()可以改变url地址且不会发送请求
 * replaceState()会替换掉当前历史记录栈中的栈顶元素
 
 区别
 
 * hash模式较丑，history模式较优雅
-* history模式zhongpushState设置的新URL可以是与当前URL同源的任意URL；而hash只可修改#后面的部分，故只可设置与当前同文档的URL
+* history模式中pushState设置的新URL可以是与当前URL同源的任意URL；而hash只可修改#后面的部分，故只可设置与当前同文档的URL
 * pushState设置的新URL可以与当前URL一模一样，这样也会把记录添加到栈中；而hash设置的新值必须与原来不一样才会触发记录添加到栈中
 * pushState通过stateObject可以添加任意类型的数据到记录中；而hash只可添加短字符串
 *  pushState可额外设置title属性供后续使用
