@@ -750,7 +750,7 @@
    <!-- 搜索结果 -->
    <div>
        <article-item></article-item>
-   </div>
+       </div>
    
    <script>
    import ArticleItem from '@/components/ArticleItem'
