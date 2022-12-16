@@ -73,7 +73,7 @@
     let obj = {
     	getThis: ()=>{
     		return ()=>{
-    			console.log(this); //wi
+    			console.log(this); //window
     		}
     	}
     }
