@@ -1,6 +1,6 @@
 // 递归
 //隐式维护了一个栈
-var inorderTraversal = function (root) {
+var inorderTraversal = function (root) {  
     const res = [];
     const inorder = (root) => {
         if (!root) {
