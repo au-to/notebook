@@ -2,6 +2,40 @@
 
 ## 创建应用
 
+### 创建实例
+
+不同于Vue2，在Vue2中，我们通过`new Vue`的方式创建一个**应用实例**；而在Vue3中，我们通过create()函数创建一个**组件实例**：
+
+``` 
+// vue2
+var app = new Vue({})
+
+// vue3
+import { createApp } from 'vue'
+// 从一个单文件组件中导入根组件
+import App from './App.vue'
+
+const app = createApp(App)
+```
+
+### 挂载应用
+
+``` 
+// 容器
+<div id="app"></div>
+
+// vue2
+var app2 = new Vue({
+  el: '#app',
+  data: {
+    message: '页面加载于 ' + new Date().toLocaleString()
+  }
+})
+
+// vue3
+app.mount('#app')
+```
+
 ## 模板语法
 
 ## 响应式基础
