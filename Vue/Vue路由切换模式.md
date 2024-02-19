@@ -6,8 +6,8 @@ vue-router控制路由切换主要有hash模式和history模式，默认使用ha
 * 我们在url后面随便添加一个#xx触发这个事件
 * vue-router默认的是hash模式，当URL改变的时候,页面不会重新加载
 * hash模式会创建hashHistory对象,在访问不同的路由时,会发生两件事: 
-  * HashHistory.push()将新的路由添加到浏览器访问的历史的栈顶,
-  * HasHistory.replace()替换到当前栈顶的路由
+* HashHistory.push()将新的路由添加到浏览器访问的历史的栈顶,
+* HasHistory.replace()替换到当前栈顶的路由
 
 **history路由**
 
