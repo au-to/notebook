@@ -36,9 +36,8 @@
    			res[strs[i].split('=')[0]] = unescape[strs[i].split('=')[1]];
    		}
    	}
-   	re
    }
    ```
-
    
+
 
