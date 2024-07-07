@@ -7,7 +7,7 @@
 JWT通常由三部分组成，分别是Header头部，Payload有效负载，Signature签名
 
 * Payload才是真正的用户信息，是用户信息经过加密之后生成的字符串
-* Header和Signature是安全性相关的部分，只是为了保证Token的安全性
+* Header和Signature是安全性相关的部分，目的为了保证Token的安全性
 
 ``` 
 Header.Payload.Signature
@@ -16,12 +16,11 @@ Header.Payload.Signature
 #### JWT的工作原理
 
 * 客户端登录，提交账号密码等信息
-* 服务器将用户的信息对象加密后生成Token字符串，并响应给客户端
+* 服务端将用户的信息对象加密后生成Token字符串，并响应给客户端
 * 客户端将收到的Token存储在本地存储或会话存储中
 * 客户端再次发起请求，通过Authorization字段，将Token发送给服务器
-* 服务器把Token字段还原成用户的信息对象
-* 用户的身份认证成功，服务器争对当前用户生成对应的响应内容
-* 服务器响应，将用户对应的页面响应给浏览器
+* 服务器把Token字段解密成用户的信息对象
+* 用户身份认证成功，服务器响应用户请求的内容
 
 #### JWT的使用方式
 
