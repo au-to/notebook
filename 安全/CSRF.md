@@ -14,8 +14,11 @@ CSRF
 
 预防措施
 
-* 涉及到数据修改操作严格使用 post 请求而不是 get 请求
-* HTTP 协议中使用 Referer 属性对请求来源进行过滤
-* 请求地址添加 token ，使黑客无法伪造用户请求
-* HTTP 请求头自定义属性验证
+* Token：每次请求时，服务器生成一个唯一的Token返回给客户端。客户端在后续请求中需携带此Token，服务器验证Token是否合法
+* Referer 和 Origin 头验证：服务器通过检查HTTP请求头中的Referer或Origin字段，确保请求来源于合法站点
+* SameSite Cookie 属性：通过设置Cookie的SameSite属性，限制Cookie在跨站请求中被发送
+  * `Strict`：Cookie仅在同站点请求中发送
+  * `Lax`：允许GET请求携带Cookie，但禁止其他方法（如POST）
+  * `None`：跨站请求总是发送Cookie，但需配合Secure标记（仅在HTTPS传输）
+* 双重Cookie验证：在服务器上生成一个CSRF Token并通过Cookie返回给客户端，同时在每次请求时从Cookie中读取Token进行验证
 * 显示验证方式：添加验证码、密码等
