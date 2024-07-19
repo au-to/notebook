@@ -2,11 +2,11 @@
 // 输入：head = [1,3,2]
 // 输出：[2,3,1]
 
-var reversePrint = function(head) {
-    let arr = [];
-    while(head!=null){
-        arr.push(head.val);
-        head = head.next;
-    }
-    return arr.reverse();
+var reversePrint = function (head) {
+  let arr = [];
+  while (head != null) {
+    arr.push(head.val);
+    head = head.next;
+  }
+  return arr.reverse();
 };

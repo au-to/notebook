@@ -6,16 +6,16 @@
 输出：[1,2,3,4,5]
 */
 
-var removeElements = function(head, val) {
-    const dummyHead = new ListNode(0);
-    dummyHead.next = head;
-    let temp = dummyHead;
-    while (temp.next !== null) {
-        if (temp.next.val == val) {
-            temp.next = temp.next.next;
-        } else {
-            temp = temp.next;
-        }
+var removeElements = function (head, val) {
+  const dummyHead = new ListNode(0);
+  dummyHead.next = head;
+  let temp = dummyHead;
+  while (temp.next !== null) {
+    if (temp.next.val == val) {
+      temp.next = temp.next.next;
+    } else {
+      temp = temp.next;
     }
-    return dummyHead.next;
+  }
+  return dummyHead.next;
 };

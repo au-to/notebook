@@ -57,7 +57,7 @@ var addTwoNumbers = function (l1, l2) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
- var addTwoNumbers = function (l1, l2) {
+var addTwoNumbers = function (l1, l2) {
   let stack1 = [],
     stack2 = [];
   // 分别遍历两个链表 加入对应栈中  出栈的时候正好反序了
