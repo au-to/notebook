@@ -1,162 +1,181 @@
-### js继承的方法与优缺点
+我们来用**简单好记的方式**，总结一下 JavaScript 中的几种继承方式、它们的原理和优缺点。可以把它们想象成几个“工具箱”，不同的方式解决不同的问题，有的老旧、有的灵活。
 
-1. #### 原型链继承
+---
 
-   实现方式：将子类的原型链指向父类的对象实例；
+## 🧱 一、原型链继承（Prototype Chain）
 
-   原理：子类实例child的内部指针指向Child的原型对象；而Child又作为Parent的实例，它的内部指针指向Parent的原型对象，所以Child可以继承父类的属性和方法。
+### 🌟核心思想：
 
-   ``` 
-   function Parent(){
-   	this.name = 'parent';
-   	this.list = ['a'];
-   }
-   Parent.prototype.sayHi = function() {
-   	console.log('Hi');
-   }
-   function Child(){};
-   Child.prototype = new Parent();
-   var child = new Child();
-   ```
+子类的原型对象 = 父类的实例。
 
-   优点：可继承构造函数的属性，父类构造函数的属性，父类原型的属性
+```js
+function Parent() {
+  this.name = 'parent';
+}
+Parent.prototype.sayHi = function() {
+  console.log('Hi');
+};
 
-   缺点：无法向父类构造函数传参；且所有实例共享父类实例的属性，若父类共有属性为引用类型， 一个子类实例更改父类构造函数共有属性时会导致继承的共有属性发生变化，比如：
+function Child() {}
+Child.prototype = new Parent();
 
-   ``` 
-   var a = new Child();
-   var b = new Child();
-   a.list.push('b');
-   console.log(b.list); // ['a','b']
-   ```
+const c = new Child();
+console.log(c.name); // 'parent'
+```
 
-2. ####  构造函数继承
+### ✅ 优点：
 
-   实现方式：在子类构造函数中使用call或者apply劫持父类构造函数方法，并传入参数
+* 简单，能继承父类的方法和属性
 
-   原理：使用call或者apply更改子类函数的作用域，使this指向父类构造函数，子类因此可以继承父类共有属性
+### ❌ 缺点：
 
-   优点：可解决原型链继承的缺点
+* **所有子实例共享父实例的引用属性**（如数组、对象），会互相污染
+* 无法向父类传参
 
-   缺点：不可继承父类的原型链方法，构造函数不可复用
+---
 
-   ``` 
-   function Parent(name,id) {
-   	this.name = name;
-   	this.id = id;
-   	this.printName = function() {
-   		console.log(this.name);
-   	}
-   };
-   Parent.prototype.sayName = function() {
-   	console.log(this.name);
-   };
-   function Child(name,id) {
-   	Parent.call(this,name,id);
-   }
-   var child = new Child('zs',1);
-   child.printName(); //zs
-   child.sayName(); //Error
-   ```
+## 🧱 二、借用构造函数继承（Constructor Borrowing）
 
-3. #### 组合继承
+### 🌟核心思想：
 
-   原理：综合使用构造函数继承和原型链继承;
+在子类构造函数里**调用父类构造函数**。
 
-   优点：可继承父类原型上的属性，且可传参；每个新实例引入的构造函数是私有的 
+```js
+function Parent() {
+  this.colors = ['red', 'blue'];
+}
+function Child() {
+  Parent.call(this); // 借用构造函数
+}
 
-   缺点：会执行两次父类的构造函数，消耗较大内存，子类的构造函数会代替原型上的那个父类构造函数
+const c1 = new Child();
+const c2 = new Child();
+c1.colors.push('green');
+console.log(c2.colors); // 不受影响
+```
 
-   ``` 
-   function Parent(name, id){
-   this.id = id;
-   this.name = name;
-   this.list = ['a'];
-   this.printName = function(){
-   console.log(this.name);
-      }
-   }
-   Parent.prototype.sayName = function(){
-   console.log(this.name);
-   };
-   function Child(name, id){
-   Parent.call(this, name, id);
-   // Parent.apply(this, arguments);
-   }
-   Child.prototype = new Parent();
-   var child = new Child("jin", "1");
-   child.printName(); // jin
-   child.sayName() // jin
-   var a = new Child();
-   var b = new Child();
-   a.list.push('b');
-   console.log(b.list); // ['a']
-   ```
+### ✅ 优点：
 
-4. #### 原型式继承
+* **避免引用属性共享问题**
+* 可传参
 
-   原理：类似Object.create，用一个函数包装一个对象，然后返回这个函数的调用，这个函数就变成了个可以随意增添属性的实例或对象，结果是将子对象的 __proto__ 指向父对象
+### ❌ 缺点：
 
-   缺点：共享引用类型
+* 无法继承原型上的方法（`Parent.prototype` 中的函数没了）
 
-   ``` 
-   function Parent() {
-   	name: ['a'];
-   }
-   function copy(object) {
-   	function F() {};
-   	F.prototype = object;
-   	return new F();
-   }
-   var child = copy(Parent);
-   ```
+---
 
-5. #### 寄生式继承
+## 🧱 三、组合继承（最常用）
 
-   原理：二次封装原型式继承，并拓展
+### 🌟核心思想：
 
-   优点：可添加新的属性和方法
+原型链 + 构造函数的组合方式。
 
-   ``` 
-   function createObject(obj) {
-   var o = copy(obj);
-   o.getNames = function() {
-   console.log(this.names);
-   return this.names;
-     }
-   return o;
-   }
-   ```
+```js
+function Parent(name) {
+  this.name = name;
+}
+Parent.prototype.sayHi = function() {
+  console.log('Hi');
+};
 
-6. #### 寄生组合式继承
+function Child(name) {
+  Parent.call(this, name); // 第一次调用
+}
+Child.prototype = new Parent(); // 第二次调用
+Child.prototype.constructor = Child;
+```
 
-   原理：改进组合继承，利用寄生式继承的思想继承原型
+### ✅ 优点：
 
-   ``` 
-   function inheritPrototype(subClass, superClass) {
-   // 复制一份父类的原型
-   var p = copy(superClass.prototype);
-   // 修正构造函数
-   p.constructor = subClass;
-   // 设置子类原型
-   subClass.prototype = p;
-   }
-   function Parent(name, id){
-   this.id = id;
-   this.name = name;
-   this.list = ['a'];
-   this.printName = function(){
-   console.log(this.name);
-   }
-   }
-   Parent.prototype.sayName = function(){
-   console.log(this.name);
-   };
-   function Child(name, id){
-   Parent.call(this, name, id);
-   // Parent.apply(this, arguments);
-   }
-   inheritPrototype(Child, Parent);
-   ```
+* 既能继承属性，也能继承方法
+* 实例之间互不影响
 
-   
+### ❌ 缺点：
+
+* 调用了两次父构造函数（一次在原型，一次在子类构造函数里）
+
+---
+
+## 🧱 四、寄生组合继承（完美写法 ✅推荐）
+
+### 🌟核心思想：
+
+优化“组合继承”的冗余，避免父类构造函数被调用两次。
+
+```js
+function Parent(name) {
+  this.name = name;
+}
+Parent.prototype.sayHi = function() {
+  console.log('Hi');
+};
+
+function Child(name) {
+  Parent.call(this, name);
+}
+
+// 核心：只继承原型
+Child.prototype = Object.create(Parent.prototype);
+Child.prototype.constructor = Child;
+```
+
+### ✅ 优点：
+
+* 原型上的方法不会重复创建
+* 属性不共享，结构清晰
+
+### ❌ 缺点：
+
+* 代码稍复杂（但实际是最合理的继承方式）
+
+---
+
+## 🧱 五、ES6 class 继承（现代方式 ✅推荐）
+
+### 🌟核心思想：
+
+使用 `class` 和 `extends` 语法糖，本质上还是原型+构造函数的组合继承。
+
+```js
+class Parent {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHi() {
+    console.log('Hi');
+  }
+}
+
+class Child extends Parent {
+  constructor(name, age) {
+    super(name); // 相当于 Parent.call(this)
+    this.age = age;
+  }
+}
+```
+
+### ✅ 优点：
+
+* 语法清晰，易读
+* 支持 super 调用父构造函数/方法
+* 与 TS 搭配使用更强大
+
+### ❌ 缺点：
+
+* 底层依然是原型链机制
+* 某些旧浏览器不支持（需要 Babel 编译）
+
+---
+
+## 🧠 总结（对比表）
+
+| 方式           | 能继承属性 | 能继承方法 | 避免共享 | 支持传参 | 复杂度  | 推荐指数  |
+| ------------ | ----- | ----- | ---- | ---- | ---- | ----- |
+| 原型链继承        | ✅     | ✅     | ❌    | ❌    | ⭐    | ⭐     |
+| 借用构造函数继承     | ✅     | ❌     | ✅    | ✅    | ⭐⭐   | ⭐⭐    |
+| 组合继承         | ✅     | ✅     | ✅    | ✅    | ⭐⭐⭐  | ⭐⭐⭐⭐  |
+| 寄生组合继承       | ✅     | ✅     | ✅    | ✅    | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| ES6 class 继承 | ✅     | ✅     | ✅    | ✅    | ⭐⭐⭐  | ⭐⭐⭐⭐⭐ |
+
+---
