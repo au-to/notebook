@@ -1,47 +1,152 @@
-1. #### 变量和作用域
+ES6（ECMAScript 2015）是 JavaScript 的一次重大更新，新增了大量语言特性，极大提升了 JS 的表达力、模块化能力和可维护性。以下是最核心和常用的 ES6 新特性整理：
 
-   * let、const以及它们的块级作用域
-   * 变量的解构赋值
+---
 
-2. #### 原生对象的方法扩展
+## ✅ 一、变量声明优化
 
-   * String：支持字符串遍历、模板字符串、repeat()
-   * RegExp：构造函数第一个参数是正则表达式，指定第二个参数不再报错
-   * Number：二进制与八进制的新写法、parseInt()
-   * Function：rest参数、箭头函数、严格模式、name属性
-   * Array：扩展运算符...
-   * Object：属性同名简写、Object.is()、Object.assign()、Object.entries()、Object.keys()、Object.values()
-   * 新增Symbol类型
+| 特性      | 说明                    |
+| ------- | --------------------- |
+| `let`   | 块级作用域，不能重复声明，不变量提升    |
+| `const` | 块级作用域，常量（值不可变或引用地址不变） |
 
-3. #### 新增Set和Map数据结构
+---
 
-   * Set：一种类似数组的数据结构，区别在于其存储的成员都是不重复的
-   * WeakSet：成员只能是对象类型、对象都是弱引用、不可被遍历
-   * Map：K-V的集合，其K可以取任意类型
-   * WeakMap：只接受对象作为键名、键名所指向的对象不计入垃圾回收机制。
+## ✅ 二、模板字符串
 
-4. #### 新增代理Proxy和反射Reflect
+```js
+const name = 'Alice';
+const msg = `Hello, ${name}!`;  // 模板字面量 + 支持换行
+```
 
-   * Proxy：对目标对象加一层“拦截”，外界对目标对象的访问、修改都必须先通过这层拦截。因而可以通过它对外界的访问进行过滤和改写。
-   * Reflect：与Proxy一样是ES6在语言层面用于操作对象提供的新API，目前它所拥有的对象方法与Proxy 对象对应
+---
 
-5. #### 异步Promise、Generator、Async
+## ✅ 三、箭头函数 `=>`
 
-   * Promise：相当于一个容器，里面保存了未来会使用的结果，它是一个对象
-   * Generator：是ES6提供的异步编程解决方案。对于Generator函数，可以将它理解为一个状态机，封装了多个内部状态；此外它还是一个遍历器生成函数，这个函数可以遍历出状态机的所有状态。
-   * Async：Generator函数的语法糖，它进行了改进：1.自带执行器；2.返回值是Promise
+简洁语法、自动绑定 `this`：
 
-6. #### class类
+```js
+const sum = (a, b) => a + b;
+```
 
-   * 基于原型实现
+---
 
-7. #### 模块module
+## ✅ 四、解构赋值（数组 / 对象）
 
-   * import和export的导入导出方式
-   * 编译时加载：编译时就能确定模块间的依赖关系
+```js
+const [a, b] = [1, 2];
+const { name, age } = { name: 'Tom', age: 18 };
+```
 
-8. #### Iterator遍历器
+---
 
-   * 一种接口，为各种不同的数据结构提供统一的访问机制；任何数据结构只要部署了iterator接口，就能实现遍历操作
+## ✅ 五、默认参数值
 
-9. #### for of循环
+```js
+function greet(name = 'Guest') {
+  console.log(`Hello, ${name}`);
+}
+```
+
+---
+
+## ✅ 六、扩展运算符 `...` / 剩余参数
+
+```js
+const arr1 = [1, 2], arr2 = [...arr1, 3];  // 拷贝/合并
+function sum(...args) { return args.reduce((a, b) => a + b); }
+```
+
+---
+
+## ✅ 七、对象字面量增强
+
+```js
+const age = 18;
+const person = {
+  name: 'Alice',
+  age,            // 属性简写
+  greet() {       // 方法简写
+    console.log('Hi');
+  }
+};
+```
+
+---
+
+## ✅ 八、Promise
+
+异步编程的标准方案：
+
+```js
+new Promise((resolve, reject) => {
+  // 异步操作
+}).then(res => {
+  // 成功
+}).catch(err => {
+  // 失败
+});
+```
+
+---
+
+## ✅ 九、类（Class）
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} says hello`);
+  }
+}
+```
+
+---
+
+## ✅ 十、模块化（`import` / `export`）
+
+```js
+// a.js
+export const name = 'Tom';
+export default function greet() {}
+
+// b.js
+import greet, { name } from './a.js';
+```
+
+---
+
+## ✅ 十一、Symbol（独一无二的值）
+
+```js
+const id = Symbol('id');
+const obj = { [id]: 123 };
+```
+
+---
+
+## ✅ 十二、迭代器 / for...of / Generator（配合 `yield`）
+
+```js
+for (const item of [1, 2, 3]) {
+  console.log(item); // 更适用于可迭代对象
+}
+```
+
+---
+
+## ✅ 十三、Map / Set 数据结构
+
+```js
+const s = new Set([1, 2, 2]);  // 去重
+const m = new Map([['a', 1]]);  // 键值对更强大
+```
+
+---
+
+### 📌 你可以这样理解 ES6 的目标：
+
+> “让 JavaScript 更现代、更结构化、更适合构建复杂应用。”
+
+---
