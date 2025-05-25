@@ -1,7 +1,3 @@
-我们来系统地讲一讲 JavaScript 的数据类型、不同数据类型之间的比较，以及判断数据类型的几种方式：
-
----
-
 ### **1. JavaScript 的数据类型**
 
 JavaScript 中的数据类型分为 **原始类型（Primitive Types）** 和 **引用类型（Reference Types）**：
